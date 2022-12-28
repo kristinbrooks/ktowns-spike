@@ -39,6 +39,10 @@ npx create-solito-app@latest ktowns-spike
 
 You can add other folders inside of `packages/` if you know what you're doing and have a good reason to.
 
+## Install Expo Go
+
+[Expo Go](https://expo.dev/client) is the app to install on your Android or iOS device to test the mobile app.
+
 ## Starting the app
 
 - Install dependencies: `yarn`
