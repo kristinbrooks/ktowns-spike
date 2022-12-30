@@ -7,7 +7,7 @@ const withTM = require('next-transpile-modules')([
   'dripsy',
   '@dripsy/core',
   'moti',
-  'app',
+  'app'
 ])
 
 /** @type {import('next').NextConfig} */
@@ -20,16 +20,19 @@ const nextConfig = {
   reactStrictMode: false,
   webpack5: true,
   images: {
-    disableStaticImages: true,
+    disableStaticImages: true
   },
   experimental: {
-    forceSwcTransforms: false, // set this to true to use reanimated + swc experimentally
-    swcPlugins: [[require.resolve('./plugins/swc_plugin_reanimated.wasm')]],
-  },
+    // advised to set this to true to fix error here: https://github.com/nandorojo/solito/issues/265
+    forceSwcTransforms: true,
+    swcPlugins: [[require.resolve('./plugins/swc_plugin_reanimated.wasm')]]
+  }
 }
 
-// This is causing warnings. We could do a workaround like this: https://github.com/cyrilwanner/next-compose-plugins/issues/59#issuecomment-1192523231
-// But the Solito creator says the fix is being worked on and doesn't advise any fix (https://github.com/nandorojo/solito/issues/220#issuecomment-1304885796)
+// This is causing warnings. We could do a workaround like this:
+// https://github.com/cyrilwanner/next-compose-plugins/issues/59#issuecomment-1192523231
+// But the Solito creator says the fix is being worked on and doesn't advise any fix here:
+// https://github.com/nandorojo/solito/issues/220#issuecomment-1304885796
 module.exports = withPlugins(
   [
     withTM,
@@ -38,9 +41,9 @@ module.exports = withPlugins(
     [
       withExpo,
       {
-        projectRoot: __dirname + '../../..',
-      },
-    ],
+        projectRoot: __dirname + '../../..'
+      }
+    ]
   ],
   nextConfig
 )

@@ -23,6 +23,11 @@
 ```sh
 npx create-solito-app@latest ktowns-spike
 ```
+**Note: As of 12/30/22 `forceSwcTransforms` needs to be changed to `true` in `next.config.js` to correct an error and 
+allow next.js to compile ([see issue here](https://github.com/nandorojo/solito/issues/265) -- if the issue has been closed 
+this note can be removed)**
+
+This monorepo uses Yarn 1.0 workspaces to manage its packages. Read about workspaces [here](https://classic.yarnpkg.com/lang/en/docs/workspaces/).
 
 ## Folder layout
 
