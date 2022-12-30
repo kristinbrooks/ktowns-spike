@@ -1,4 +1,6 @@
 import 'raf/polyfill'
+import "../styles/globals.css";
+import { NativeBaseProvider } from "native-base";
 
 const fixReanimatedIssue = () => {
   // FIXME remove this once this reanimated fix gets released
@@ -27,9 +29,9 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Provider>
+      <NativeBaseProvider>
         <Component {...pageProps} />
-      </Provider>
+      </NativeBaseProvider>
     </>
   )
 }
