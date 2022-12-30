@@ -5,7 +5,7 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <Box>Hello world</Box>
-      <NativeNavigation />
+      {/*<NativeNavigation />*/}
     </NativeBaseProvider>
   );
 }

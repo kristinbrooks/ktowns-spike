@@ -7,6 +7,7 @@
     "@react-navigation/native-stack": "^6.5.0",
     "dripsy": "^3.6.0",
     "expo-linking": "^3.0.0",
+    "lerna-update-wizard": "^1.1.2",
     "moti": "latest",
     "native-base": "^3.4.25",
     "react-native-reanimated": "2.9.1",
