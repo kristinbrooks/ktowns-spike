@@ -28,6 +28,8 @@ const nextConfig = {
   },
 }
 
+// This is causing warnings. We could do a workaround like this: https://github.com/cyrilwanner/next-compose-plugins/issues/59#issuecomment-1192523231
+// But the Solito creator says the fix is being worked on and doesn't advise any fix (https://github.com/nandorojo/solito/issues/220#issuecomment-1304885796)
 module.exports = withPlugins(
   [
     withTM,
