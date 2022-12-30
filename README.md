@@ -45,11 +45,20 @@ You can add other folders inside of `packages/` if you know what you're doing an
 
 ## Starting the app
 
-- Install dependencies: `yarn`
+The commands are run from the root directory.
 
-- Next.js local dev: `yarn web`
+- Install dependencies if necessary: run `yarn`
+
+
+- Next.js local dev:
+  ```shell
+  yarn web
+  ```
   - Runs `yarn next`
-- Expo local dev: `yarn native`
+- Expo local dev:
+  ```shell
+  yarn native
+  ```
   - Runs `expo start`
 
 ## Adding new dependencies
@@ -63,4 +72,4 @@ If you're installing a JavaScript-only dependency that will be used across platf
 If you're installing a library with any native code, you must install it in `apps/expo`.
 
 You can also install the native library inside of `packages/app` if you want to get autoimport for that package 
-inside of the `app` folder. However, you need to be careful and install the _exact_ same version in both packages. If the versions mismatch at all, you'll potentially get terrible bugs. This is a classic monorepo issue. Use `lerna-update-wizard` to help with this (you don't need to use Lerna to use that lib).
+inside the `app` folder. However, you need to be careful and install the _exact_ same version in both packages. If the versions mismatch at all, you'll potentially get terrible bugs. This is a classic monorepo issue. Use `lerna-update-wizard` to help with this (you don't need to use Lerna to use that lib).
