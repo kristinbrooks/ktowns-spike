@@ -7,6 +7,7 @@ Table of Contents
 
 * [About](#about)
   * [Monorepo Structure](#monorepo-structure)
+    * [Folder Layout](#folder-layout)
     * [Workspaces](#workspaces)
   * [Tech Stack](#tech-stack)
     * [Solito](#solito)
@@ -16,8 +17,9 @@ Table of Contents
     * [NativeBase](#nativebase)
     * [Supabase](#supabase)
     * [TypeScript](#typescript)
-* [Create Blank Solito Monorepo](#create-blank-solito-monorepo)
-* [Folder Layout](#folder-layout)
+* [Setup](#setup)
+  * [Create Blank Solito Monorepo](#create-blank-solito-monorepo)
+  * [Installing NativeBase](#installing-nativebase)
 * [Expo CLI](#expo-cli)
 * [Expo Go](#expo-go)
 * [Starting the App](#starting-the-app)
@@ -32,6 +34,21 @@ Table of Contents
 *Monorepos, or "monolithic repositories", are single repositories containing multiple apps or packages. It can help
 speed up development for larger projects, make it easier to share code, and act as a single source of truth.*
 ([source](https://docs.expo.dev/guides/monorepos/))
+
+#### Folder Layout
+
+- `apps` entry points for each app
+  - `expo`
+  - `next`
+
+
+- `packages` shared packages across apps
+  - `app` you'll be importing most files from `app/`
+    - `features` (don't use a `screens` folder. organize by feature.)
+    - `provider` (all the providers that wrap the app, and some no-ops for Web.)
+    - `navigation` Next.js has a `pages/` folder. React Native doesn't. This folder contains navigation-related code for RN. You may use it for any navigation code, such as custom links.
+
+You can add other folders inside of `packages/` if you know what you're doing and have a good reason to.
 
 #### Workspaces
 
@@ -116,7 +133,9 @@ Links:
 > specific type when they are declared and restrictions will be enforced on if or how the types can be mixed. An
 > error/exception will occur if these restrictions are violated.
 
-## Create Blank Solito Monorepo
+## Setup
+
+### Create Blank Solito Monorepo
 
 Run:
 ```shell
@@ -132,21 +151,25 @@ this note can be removed)**
 > This monorepo will install Solito, Expo, React Native, and Next.js into the appropriate monorepo structure for Expo. 
 > As a bonus, it also sets up TypeScript, Prettier, and Eslint with all the config already done for us.
 
+### Installing NativeBase
 
-## Folder Layout
+From **root directory** run:
+```shell
+cd packages/app/
+yarn add native-base react-native-web react-native-svg react-native-safe-area-context
+yarn add next-compose-plugins next-transpile-modules @expo/next-adapter next-fonts next-images -D
+```
+Then remove duplicated dependencies that were already installed in the nested `package.json` files when we created 
+the monorepo.
 
-- `apps` entry points for each app
-
-  - `expo`
-  - `next`
-
-- `packages` shared packages across apps
-  - `app` you'll be importing most files from `app/`
-    - `features` (don't use a `screens` folder. organize by feature.)
-    - `provider` (all the providers that wrap the app, and some no-ops for Web.)
-    - `navigation` Next.js has a `pages/` folder. React Native doesn't. This folder contains navigation-related code for RN. You may use it for any navigation code, such as custom links.
-
-You can add other folders inside of `packages/` if you know what you're doing and have a good reason to.
+From **root directory** run:
+```shell
+cd apps/expo/
+yarn remove react-native-safe-area-context react-native-web
+cd ../next/
+yarn remove next-compose-plugins next-transpile-modules @expo/next-adapter next-fonts next-images
+```
+Finally run `yarn` in the **root directory** to make sure all everything is linked corrected and the `yarn.lock` in updated.
 
 ## Expo CLI
 
