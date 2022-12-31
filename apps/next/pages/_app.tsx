@@ -11,10 +11,12 @@ const fixReanimatedIssue = () => {
 
 fixReanimatedIssue()
 
-import { Provider } from 'app/provider'
+// import { Provider } from 'app/provider'
 import Head from 'next/head'
 import React from 'react'
 import type { SolitoAppProps } from 'solito'
+// import "../styles/globals.css";
+import { NativeBaseProvider } from "native-base";
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {
   return (
@@ -27,9 +29,12 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Provider>
+      {/*<Provider>*/}
+      {/*  <Component {...pageProps} />*/}
+      {/*</Provider>*/}
+      <NativeBaseProvider>
         <Component {...pageProps} />
-      </Provider>
+      </NativeBaseProvider>
     </>
   )
 }

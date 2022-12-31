@@ -10,12 +10,13 @@ const withTM = require('next-transpile-modules')([
   'app'
 ])
 
-/** @type {import('next').NextConfig} */
+// /** @type {import('next').NextConfig} */
+// TODO: this change was suggested by the ide...do I want to change this?
+/** @type {{images: {disableStaticImages: boolean}, reactStrictMode: boolean, experimental: {swcPlugins: [string][], forceSwcTransforms: boolean}, webpack5: boolean}} */
 const nextConfig = {
   // reanimated (and thus, Moti) doesn't work with strict mode currently...
   // https://github.com/nandorojo/moti/issues/224
   // https://github.com/necolas/react-native-web/pull/2330
-  // https://github.com/nandorojo/moti/issues/224
   // once that gets fixed, set this back to true
   reactStrictMode: false,
   webpack5: true,
@@ -36,14 +37,9 @@ const nextConfig = {
 module.exports = withPlugins(
   [
     withTM,
-    withFonts,
     withImages,
-    [
-      withExpo,
-      {
-        projectRoot: __dirname + '../../..'
-      }
-    ]
+    [withFonts, { projectRoot: __dirname }],
+    [withExpo, { projectRoot: __dirname + '../../..' }]
   ],
   nextConfig
 )
