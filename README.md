@@ -165,7 +165,9 @@ yarn
 ```
 I was using the latest LTS version of Nodejs (18.12.1) when I set up this project. But after I installed NativeBase 
 I got an error `error:0308010C:digital envelope routines::unsupported`. Per [these instructions](https://www.newline.co/@kchan/how-to-fix-the-error-errorerror0308010cdigital-envelope-routinesunsupported--0f8d3f17) I tried passing 
-`--openssl-legacy-provider`via cli as an env variable and as a flag in the script in the Next.js `package.json`, but this didn't work. So I downgraded to the last LTS version before Nodejs 18, which is version 16.19.0. After changing the version in my `.tool-versions` (or you can manually uninstall then reinstall if not using asdf version manager) I deleted the `node_modules` in the root directory. Then I ran `yarn install`.
+`--openssl-legacy-provider`via cli as an env variable and as a flag in the script in the Next.js `package.json`, but 
+this didn't work. So I downgraded to an earlier LTS version before Nodejs 18, which is version 16.18.1 After changing 
+the version in my `.tool-versions` (or you can manually uninstall then reinstall if not using asdf version manager) I deleted the `node_modules` in the root directory. Then I ran `yarn install`.
 
 ## Expo CLI
 
