@@ -134,40 +134,13 @@ Links:
 
 ## Setup
 
-### Create Blank Solito Monorepo
+### Create Blank Monorepo
 
-Run:
-```shell
-npx create-solito-app@latest ktowns-spike
-```
-[Solito Starter Doc Page](https://solito.dev/starter#start-from-the-terminal) /
-[GitHub](https://githubcom/nandorojo/solito/tree/master/example-monorepos/blank)
+https://docs.nativebase.io/solito
 
-**Note: As of 12/30/22 `forceSwcTransforms` needs to be changed to `true` in `next.config.js` to correct an error and 
-allow next.js to compile ([see issue here](https://github.com/nandorojo/solito/issues/265) -- if the issue has been closed 
-this note can be removed)**
-
-> This monorepo will install Solito, Expo, React Native, and Next.js into the appropriate monorepo structure for Expo. 
+> This monorepo will install Solito, Expo, React Native, Next.js, and NativeBase into the appropriate monorepo 
+> structure for Expo. 
 > As a bonus, it also sets up TypeScript, Prettier, and Eslint with all the config already done for us.
-
-### Installing NativeBase
-
-From the **root directory** run:
-```shell
-cd packages/app/
-yarn add native-base react-native-web react-native-svg
-cd ../../apps/expo/
-yarn add react-native-web react-native-svg
-cd ../next/
-yarn add @native-base/next-adapter
-cd ../..
-yarn
-```
-I was using the latest LTS version of Nodejs (18.12.1) when I set up this project. But after I installed NativeBase 
-I got an error `error:0308010C:digital envelope routines::unsupported`. Per [these instructions](https://www.newline.co/@kchan/how-to-fix-the-error-errorerror0308010cdigital-envelope-routinesunsupported--0f8d3f17) I tried passing 
-`--openssl-legacy-provider`via cli as an env variable and as a flag in the script in the Next.js `package.json`, but 
-this didn't work. So I downgraded to an earlier LTS version before Nodejs 18, which is version 16.18.1 After changing 
-the version in my `.tool-versions` (or you can manually uninstall then reinstall if not using asdf version manager) I deleted the `node_modules` in the root directory. Then I ran `yarn install`.
 
 ## Expo CLI
 
