@@ -126,8 +126,7 @@ Links:
 
 #### TypeScript
 
-> *'TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any
-> scale.* ([source](https://www.typescriptlang.org/))
+> *'TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.'* ([source](https://www.typescriptlang.org/))
 >
 > Integers, Strings, Booleans, etc. are examples of types. In a strongly typed languages variables must be assigned a
 > specific type when they are declared and restrictions will be enforced on if or how the types can be mixed. An
@@ -169,7 +168,12 @@ yarn remove react-native-safe-area-context react-native-web
 cd ../next/
 yarn remove next-compose-plugins next-transpile-modules @expo/next-adapter next-fonts next-images
 ```
-Finally run `yarn` in the **root directory** to make sure all everything is linked corrected and the `yarn.lock` in updated.
+Finally run `yarn install` in the **root directory** to make sure all everything is linked corrected and the `yarn.
+lock` in updated.
+
+I was using the latest LTS version of Nodejs (18.12.1) when I set up this project. But after I installed NativeBase 
+I got an error `error:0308010C:digital envelope routines::unsupported`. Per [these instructions](https://www.newline.co/@kchan/how-to-fix-the-error-errorerror0308010cdigital-envelope-routinesunsupported--0f8d3f17) I tried passing 
+`--openssl-legacy-provider`via cli as an env variable and as a flag in the script in the Next.js `package.json`, but this didn't work. So I downgraded to the last LTS version before Nodejs 18, which is version 16.19.0. After changing the version in my `.tool-versions` (or you can manually uninstall then reinstall if not using asdf version manager) I deleted the `node_modules` in the root directory. Then I ran `yarn install`.
 
 ## Expo CLI
 
@@ -193,7 +197,7 @@ io/watchman/docs/install.html).
 
 These commands are run from the **root directory**.
 
-- Install dependencies if necessary: run `yarn`
+- Install dependencies if necessary: run `yarn install`
 
 
 - Next.js local dev:
@@ -209,6 +213,8 @@ These commands are run from the **root directory**.
 
 ## Adding New Dependencies
 
+**NOTE: Because we are using yarn instead of npm, make sure to install dependencies(packages) with `yarn add`  and NOT with `npm install`**
+
 ### Pure JS Dependencies
 
 If you're installing a JavaScript-only dependency that will be used across platforms, install it in `packages/app`.
@@ -217,5 +223,4 @@ If you're installing a JavaScript-only dependency that will be used across platf
 
 If you're installing a library with any native code, you must install it in `apps/expo`.
 
-You can also install the native library inside of `packages/app` if you want to get autoimport for that package 
-inside the `app` folder. However, you need to be careful and install the _exact_ same version in both packages. If the versions mismatch at all, you'll potentially get terrible bugs. This is a classic monorepo issue. Use `lerna-update-wizard` to help with this (you don't need to use Lerna to use that lib).
+You can also install the native library inside of `packages/app` if you want to get autoimport for that package inside the `app` folder. However, you need to be careful and install the _exact_ same version in both packages. If the versions mismatch at all, you'll potentially get terrible bugs. This is a classic monorepo issue. Use `lerna-update-wizard` to help with this (you don't need to use Lerna to use that lib).
