@@ -7,7 +7,11 @@ const withTM = require('next-transpile-modules')([
   'dripsy',
   '@dripsy/core',
   'moti',
-  'app'
+  'app',
+  "react-native-web",
+  "react-native-svg",
+  "native-base",
+  "react-native-svg"
 ])
 
 // /** @type {import('next').NextConfig} */
@@ -39,7 +43,7 @@ module.exports = withPlugins(
     withTM,
     withImages,
     [withFonts, { projectRoot: __dirname }],
-    [withExpo, { projectRoot: __dirname + '../../..' }]
+    [withExpo, { projectRoot: __dirname}]
   ],
   nextConfig
 )

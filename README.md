@@ -152,25 +152,17 @@ this note can be removed)**
 
 ### Installing NativeBase
 
-From **root directory** run:
+From the **root directory** run:
 ```shell
 cd packages/app/
-yarn add native-base react-native-web react-native-svg react-native-safe-area-context
-yarn add next-compose-plugins next-transpile-modules @expo/next-adapter next-fonts next-images -D
-```
-Then remove duplicated dependencies that were already installed in the nested `package.json` files when we created 
-the monorepo.
-
-From **root directory** run:
-```shell
-cd apps/expo/
-yarn remove react-native-safe-area-context react-native-web
+yarn add native-base react-native-web react-native-svg
+cd ../../apps/expo/
+yarn add react-native-web react-native-svg
 cd ../next/
-yarn remove next-compose-plugins next-transpile-modules @expo/next-adapter next-fonts next-images
+yarn add @native-base/next-adapter
+cd ../..
+yarn
 ```
-Finally run `yarn install` in the **root directory** to make sure all everything is linked corrected and the `yarn.
-lock` in updated.
-
 I was using the latest LTS version of Nodejs (18.12.1) when I set up this project. But after I installed NativeBase 
 I got an error `error:0308010C:digital envelope routines::unsupported`. Per [these instructions](https://www.newline.co/@kchan/how-to-fix-the-error-errorerror0308010cdigital-envelope-routinesunsupported--0f8d3f17) I tried passing 
 `--openssl-legacy-provider`via cli as an env variable and as a flag in the script in the Next.js `package.json`, but this didn't work. So I downgraded to the last LTS version before Nodejs 18, which is version 16.19.0. After changing the version in my `.tool-versions` (or you can manually uninstall then reinstall if not using asdf version manager) I deleted the `node_modules` in the root directory. Then I ran `yarn install`.
